@@ -39,7 +39,8 @@ namespace LibraryServices
 
             return isBook ?
                 _context.Books.FirstOrDefault(book => book.Id == id).Author :
-                _context.Videos.FirstOrDefault(video => video.Id == id).Director;
+                _context.Videos.FirstOrDefault(video => video.Id == id).Director
+                ?? "Unknown";
         }
 
         public LibraryAsset GetById(int id)
@@ -79,7 +80,10 @@ namespace LibraryServices
 
         public string GetType(int id)
         {
-            throw new NotImplementedException();
+            var book = _context.LibraryAssets.OfType<Book>()
+                .Where(b => b.Id == id);
+
+            return book.Any() ? "Book" : "Video";
         }
     }
 }
