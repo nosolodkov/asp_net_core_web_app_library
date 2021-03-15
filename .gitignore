@@ -338,3 +338,6 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+# Local ignores for this Solution
+/src/Library/wwwroot/lib/material-design-lite
