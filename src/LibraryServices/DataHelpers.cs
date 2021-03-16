@@ -25,12 +25,12 @@ namespace LibraryServices
 
         private static string HumanizeTime(int openTime)
         {
-            return Enum.GetName(typeof(DayOfWeek), openTime);
+            return TimeSpan.FromHours(openTime).ToString("hh':'mm");
         }
 
         private static string HumanizeDay(int dayOfWeek)
         {
-            return TimeSpan.FromHours(dayOfWeek).ToString("hh':'mm");
+            return Enum.GetName(typeof(DayOfWeek), dayOfWeek - 1);
         }
     }
 }
